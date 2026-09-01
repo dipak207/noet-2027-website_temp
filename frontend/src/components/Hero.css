@@ -1,6 +1,5 @@
 .hero {
   position: relative;
-
   width: 100%;
   min-height: 100svh;
 
@@ -13,27 +12,22 @@
   text-align: center;
 
   padding:
-    calc(var(--header-h) + 2rem)
+    calc(var(--header-h) + 1.5rem)
     1rem
-    4rem;
+    3rem;
 
   background: #07111f;
 
   isolation: isolate;
 }
 
-/*
- * Background video
- *
- * The source MP4 is portrait-oriented and contains black padding.
- * The extra scale intentionally crops that baked-in padding so the
- * actual renewable-energy scene fills the hero.
- */
+/* =========================================================
+   BACKGROUND VIDEO
+   ========================================================= */
+
 .hero-video-bg {
   position: absolute;
-
-  top: 0;
-  left: 0;
+  inset: 0;
 
   width: 100%;
   height: 100%;
@@ -41,25 +35,28 @@
   object-fit: cover;
   object-position: center center;
 
-  transform: scale(1.65);
+  /*
+   * The MP4 itself contains black padding because it is a
+   * portrait video. Zooming crops that padding out.
+   */
+  transform: scale(1.85);
   transform-origin: center center;
 
   z-index: 0;
 
-  opacity: 1;
-
   display: block;
 
-  pointer-events: none;
+  opacity: 1;
 
   max-width: none;
+  pointer-events: none;
 
   will-change: transform;
 }
 
+/* Dark/readability overlay */
 .hero-overlay {
   position: absolute;
-
   inset: 0;
 
   z-index: 1;
@@ -69,21 +66,24 @@
   background:
     linear-gradient(
       180deg,
-      rgba(3, 12, 28, 0.2) 0%,
-      rgba(3, 12, 28, 0.08) 38%,
-      rgba(3, 12, 28, 0.48) 100%
+      rgba(3, 12, 28, 0.18) 0%,
+      rgba(3, 12, 28, 0.08) 42%,
+      rgba(3, 12, 28, 0.52) 100%
     ),
     linear-gradient(
       90deg,
       rgba(3, 12, 28, 0.18) 0%,
-      rgba(3, 12, 28, 0.02) 55%,
-      rgba(3, 12, 28, 0.15) 100%
+      rgba(3, 12, 28, 0.02) 50%,
+      rgba(3, 12, 28, 0.16) 100%
     );
 }
 
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
 .hero-content {
   position: relative;
-
   z-index: 2;
 
   width: min(100%, 1120px);
@@ -96,44 +96,46 @@
   align-items: center;
   justify-content: center;
 
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
-/*
- * Large supporting identity line.
- *
- * This is intentionally much larger than the old eyebrow text.
- */
-.hero-eyebrow {
-  max-width: 100%;
+/* =========================================================
+   NATIONAL CONFERENCE
+   ========================================================= */
 
-  margin: 0 0 0.4rem;
+.hero-eyebrow {
+  width: 100%;
+  margin: 0;
 
   color: #ffffff;
 
   font-size: clamp(
-    1.15rem,
-    2.6vw,
-    2.5rem
+    1.2rem,
+    2.7vw,
+    2.45rem
   );
 
   line-height: 1.15;
 
   font-weight: 900;
 
-  letter-spacing: 0.1em;
+  letter-spacing: 0.085em;
 
   text-transform: uppercase;
 
   text-shadow:
-    0 3px 14px rgba(0, 0, 0, 0.6),
-    0 1px 3px rgba(0, 0, 0, 0.75);
+    0 4px 14px rgba(0, 0, 0, 0.75),
+    0 2px 5px rgba(0, 0, 0, 0.9);
 }
 
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
 /*
- * Main title.
- *
- * No box, no glassmorphism, no blur.
+ * No title-card.
+ * No blur.
+ * No glass box.
  */
 .hero-title {
   width: min(100%, 1080px);
@@ -143,83 +145,96 @@
   color: #ffffff;
 
   font-size: clamp(
-    2.5rem,
-    5.6vw,
-    5.4rem
+    2.55rem,
+    5.4vw,
+    4.9rem
   );
 
   line-height: 1.03;
 
   font-weight: 900;
 
-  letter-spacing: -0.045em;
+  letter-spacing: -0.04em;
 
   text-wrap: balance;
 
   text-shadow:
-    0 5px 18px rgba(0, 0, 0, 0.7),
-    0 2px 5px rgba(0, 0, 0, 0.85);
+    0 5px 18px rgba(0, 0, 0, 0.78),
+    0 2px 6px rgba(0, 0, 0, 0.9);
 }
 
-/*
- * Supporting tagline
- */
+/* =========================================================
+   TAGLINE
+   ========================================================= */
+
 .hero-tagline {
-  margin: 0.15rem 0 0;
+  margin: 0.1rem 0 0;
 
   color: #ffffff;
 
   font-size: clamp(
     1rem,
-    1.9vw,
-    1.6rem
+    1.8vw,
+    1.55rem
   );
 
   line-height: 1.3;
 
   font-weight: 750;
 
-  letter-spacing: 0.01em;
-
   text-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.7),
-    0 1px 3px rgba(0, 0, 0, 0.8);
+    0 3px 12px rgba(0, 0, 0, 0.75),
+    0 1px 4px rgba(0, 0, 0, 0.85);
 }
 
+/* =========================================================
+   DATE + ORGANIZER
+   ========================================================= */
+
 /*
- * Date + organizer
+ * IMPORTANT:
+ *
+ * These are deliberately stacked.
+ * This eliminates the previous grid collision and also gives
+ * a much cleaner hierarchy on phones and desktop.
  */
 .hero-details {
-  width: min(100%, 860px);
+  width: min(100%, 760px);
 
-  display: grid;
-  grid-template-columns: auto 1px minmax(0, 1fr);
+  display: flex;
+  flex-direction: column;
 
   align-items: center;
 
-  gap: 1.35rem;
+  gap: 0.75rem;
 
   margin: 0.35rem auto 0;
 }
 
+/* Date */
+
 .hero-date-box {
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
   gap: 0.7rem;
 
-  min-height: 58px;
+  min-height: 56px;
 
-  padding: 0.85rem 1.35rem;
+  padding:
+    0.75rem
+    1.25rem;
 
   color: #ffffff;
 
-  background: rgba(3, 12, 28, 0.46);
+  background:
+    rgba(3, 12, 28, 0.48);
 
   border:
     1px solid
-    rgba(255, 255, 255, 0.42);
+    rgba(255, 255, 255, 0.46);
 
   border-radius: 14px;
 
@@ -227,71 +242,77 @@
   -webkit-backdrop-filter: blur(8px);
 
   box-shadow:
-    0 12px 28px rgba(0, 0, 0, 0.18);
-}
-
-.hero-date-box svg {
-  color: #ff6b6b;
-
-  flex: 0 0 auto;
-}
-
-.hero-date-box span {
-  font-size: clamp(
-    0.98rem,
-    1.5vw,
-    1.35rem
-  );
-
-  line-height: 1.25;
-
-  font-weight: 850;
+    0 12px 28px rgba(0, 0, 0, 0.2);
 
   white-space: nowrap;
 }
 
-.hero-organizer {
-  margin: 0;
+.hero-date-box svg {
+  flex: 0 0 auto;
 
-  color: rgba(255, 255, 255, 0.86);
+  color: #ff6b6b;
+}
+
+.hero-date-box span {
+  color: #ffffff;
 
   font-size: clamp(
-    0.9rem,
-    1.15vw,
-    1.08rem
+    1rem,
+    1.45vw,
+    1.3rem
+  );
+
+  line-height: 1.2;
+
+  font-weight: 850;
+}
+
+/* Organizer */
+
+.hero-organizer {
+  width: 100%;
+
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: clamp(
+    0.95rem,
+    1.2vw,
+    1.1rem
   );
 
   line-height: 1.45;
 
-  font-weight: 600;
+  font-weight: 650;
 
-  text-align: left;
+  text-align: center;
 
   text-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.65);
+    0 3px 12px rgba(0, 0, 0, 0.7);
 }
 
 .hero-organizer strong {
   display: block;
 
-  margin-top: 0.22rem;
+  margin-top: 0.2rem;
 
   color: #ffffff;
 
   font-size: clamp(
-    0.95rem,
+    1rem,
     1.35vw,
-    1.16rem
+    1.18rem
   );
+
+  line-height: 1.4;
 
   font-weight: 850;
 }
 
-.hero-details::before {
-  content: "";
-
-  display: block;
-}
+/* =========================================================
+   CTA
+   ========================================================= */
 
 .hero-cta {
   display: flex;
@@ -303,30 +324,25 @@
 
   flex-wrap: wrap;
 
-  margin-top: 0.7rem;
+  margin-top: 0.5rem;
 }
 
 .hero-cta .btn {
-  min-width: 170px;
+  min-width: 175px;
 
   padding:
     0.85rem
-    1.3rem;
+    1.35rem;
 
   border-radius: 11px;
 
-  font-size: clamp(
-    0.9rem,
-    1.1vw,
-    1rem
-  );
+  font-size: 1rem;
 
   font-weight: 850;
 }
 
-/*
- * Keep hero CTA styling scoped so other site buttons are unaffected.
- */
+/* Primary */
+
 .hero-cta .btn-primary {
   background: var(--highlight-color);
 
@@ -334,7 +350,7 @@
 
   box-shadow:
     0 10px 24px
-    rgba(13, 110, 253, 0.32);
+    rgba(13, 110, 253, 0.3);
 }
 
 .hero-cta .btn-primary:hover {
@@ -347,14 +363,16 @@
     rgba(13, 110, 253, 0.4);
 }
 
-.hero-cta .btn-secondary {
-  background: rgba(255, 255, 255, 0.92);
+/* Secondary */
 
-  border: 1px solid rgba(255, 255, 255, 0.75);
+.hero-cta .btn-secondary {
+  background: rgba(255, 255, 255, 0.94);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.75);
 
   color: #0f172a;
-
-  font-weight: 800;
 
   box-shadow:
     0 10px 24px
@@ -367,81 +385,81 @@
   color: #0f172a;
 
   transform: translateY(-2px);
-
-  box-shadow:
-    0 14px 28px
-    rgba(0, 0, 0, 0.22);
 }
 
-/* Tablet */
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 1024px) {
   .hero {
     padding:
-      calc(var(--header-h) + 1.5rem)
+      calc(var(--header-h) + 1.25rem)
       1rem
-      3.5rem;
+      2.75rem;
   }
 
   .hero-video-bg {
-    transform: scale(1.75);
+    transform: scale(2);
   }
 
   .hero-content {
-    gap: 1rem;
+    gap: 0.9rem;
   }
 
   .hero-eyebrow {
     font-size: clamp(
       1.05rem,
-      2.8vw,
+      3vw,
       2rem
     );
   }
 
   .hero-title {
     font-size: clamp(
-      2.35rem,
-      6.2vw,
-      4.5rem
+      2.3rem,
+      6vw,
+      4.2rem
+    );
+  }
+
+  .hero-tagline {
+    font-size: clamp(
+      0.95rem,
+      2vw,
+      1.35rem
     );
   }
 
   .hero-details {
-    max-width: 760px;
+    width: min(100%, 700px);
 
-    grid-template-columns: 1fr;
-
-    gap: 0.9rem;
-  }
-
-  .hero-date-box {
-    justify-self: center;
-  }
-
-  .hero-organizer {
-    text-align: center;
+    gap: 0.7rem;
   }
 }
 
-/* Mobile */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 760px) {
   .hero {
     min-height: 100svh;
 
     padding:
-      calc(var(--header-h) + 1.3rem)
-      1rem
-      3rem;
+      calc(var(--header-h) + 0.85rem)
+      0.85rem
+      2.25rem;
   }
 
   /*
-   * More crop on mobile because the source is portrait and the
-   * original file contains baked-in black padding.
+   * Much stronger crop on mobile.
+   *
+   * This removes the black padding that is physically present
+   * inside the portrait MP4.
    */
   .hero-video-bg {
-    transform: scale(2.05);
+    transform: scale(2.7);
     object-position: center center;
   }
 
@@ -449,112 +467,111 @@
     background:
       linear-gradient(
         180deg,
-        rgba(3, 12, 28, 0.3) 0%,
-        rgba(3, 12, 28, 0.12) 45%,
-        rgba(3, 12, 28, 0.58) 100%
+        rgba(3, 12, 28, 0.24) 0%,
+        rgba(3, 12, 28, 0.12) 42%,
+        rgba(3, 12, 28, 0.56) 100%
       );
   }
 
   .hero-content {
     width: 100%;
 
-    gap: 1rem;
+    gap: 0.8rem;
   }
 
   .hero-eyebrow {
-    max-width: 95%;
-
-    margin-bottom: 0.15rem;
+    width: 100%;
+    max-width: 370px;
 
     font-size: clamp(
-      1rem,
-      4.8vw,
-      1.45rem
+      0.9rem,
+      4.45vw,
+      1.25rem
     );
 
-    line-height: 1.18;
+    line-height: 1.2;
 
-    letter-spacing: 0.075em;
+    letter-spacing: 0.065em;
   }
 
   .hero-title {
     width: 100%;
+    max-width: 390px;
 
     font-size: clamp(
-      2.15rem,
-      9.4vw,
-      3.35rem
+      2rem,
+      9.2vw,
+      3.1rem
     );
 
-    line-height: 1.03;
+    line-height: 1.02;
 
-    letter-spacing: -0.035em;
+    letter-spacing: -0.025em;
   }
 
   .hero-tagline {
-    max-width: 92%;
+    width: 100%;
+    max-width: 340px;
 
     font-size: clamp(
-      0.95rem,
-      4vw,
-      1.2rem
+      0.88rem,
+      3.9vw,
+      1.1rem
     );
 
-    line-height: 1.28;
+    line-height: 1.25;
   }
 
   .hero-details {
     width: 100%;
 
-    grid-template-columns: 1fr;
+    gap: 0.65rem;
 
-    gap: 0.85rem;
-
-    margin-top: 0.3rem;
+    margin-top: 0.2rem;
   }
 
   .hero-date-box {
-    justify-self: center;
-
     width: fit-content;
     max-width: 100%;
 
-    min-height: 52px;
+    min-height: 50px;
 
     padding:
-      0.72rem
-      1rem;
+      0.65rem
+      0.9rem;
 
     border-radius: 12px;
   }
 
   .hero-date-box span {
-    font-size: clamp(
-      0.95rem,
-      4.2vw,
-      1.15rem
-    );
-
     white-space: normal;
+
+    font-size: clamp(
+      0.9rem,
+      4vw,
+      1.05rem
+    );
   }
 
   .hero-date-box svg {
-    width: 18px;
-    height: 18px;
+    width: 17px;
+    height: 17px;
   }
 
   .hero-organizer {
-    text-align: center;
+    max-width: 340px;
 
-    font-size: 0.92rem;
+    font-size: 0.85rem;
 
-    line-height: 1.45;
+    line-height: 1.4;
   }
 
   .hero-organizer strong {
-    margin-top: 0.3rem;
+    margin-top: 0.22rem;
 
-    font-size: 1rem;
+    font-size: 0.94rem;
+
+    line-height: 1.35;
   }
 
   .hero-cta {
@@ -562,90 +579,121 @@
 
     flex-direction: column;
 
-    gap: 0.7rem;
+    gap: 0.6rem;
 
-    margin-top: 0.35rem;
+    margin-top: 0.25rem;
   }
 
   .hero-cta .btn {
     width: min(100%, 340px);
 
     min-width: 0;
+
+    padding:
+      0.78rem
+      1rem;
   }
 }
 
-/* Small mobile */
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
 
 @media (max-width: 480px) {
   .hero {
     padding:
-      calc(var(--header-h) + 1rem)
-      0.85rem
-      2.5rem;
+      calc(var(--header-h) + 0.7rem)
+      0.75rem
+      2rem;
   }
 
   .hero-video-bg {
-    transform: scale(2.15);
+    transform: scale(2.9);
   }
 
   .hero-eyebrow {
-    font-size: 0.92rem;
+    max-width: 350px;
 
-    letter-spacing: 0.065em;
-  }
-
-  .hero-title {
-    font-size: clamp(
-      2rem,
-      10vw,
-      2.85rem
-    );
-  }
-
-  .hero-tagline {
-    font-size: 0.93rem;
-  }
-
-  .hero-date-box {
-    padding:
-      0.65rem
-      0.85rem;
-  }
-
-  .hero-organizer {
-    font-size: 0.86rem;
-  }
-
-  .hero-organizer strong {
-    font-size: 0.95rem;
-  }
-}
-
-/* Very small phones */
-
-@media (max-width: 380px) {
-  .hero-video-bg {
-    transform: scale(2.25);
-  }
-
-  .hero-eyebrow {
-    font-size: 0.84rem;
+    font-size: 0.87rem;
 
     letter-spacing: 0.055em;
   }
 
   .hero-title {
-    font-size: 1.9rem;
+    max-width: 360px;
+
+    font-size: clamp(
+      1.9rem,
+      9.6vw,
+      2.7rem
+    );
   }
 
   .hero-tagline {
-    font-size: 0.88rem;
+    font-size: 0.86rem;
+  }
+
+  .hero-date-box {
+    padding:
+      0.6rem
+      0.8rem;
+  }
+
+  .hero-date-box span {
+    font-size: 0.9rem;
+  }
+
+  .hero-organizer {
+    font-size: 0.82rem;
+  }
+
+  .hero-organizer strong {
+    font-size: 0.9rem;
   }
 }
 
-/*
- * Reduced motion / accessibility fallback.
- */
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+  .hero-video-bg {
+    transform: scale(3.05);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.8rem;
+
+    letter-spacing: 0.045em;
+  }
+
+  .hero-title {
+    font-size: 1.82rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.82rem;
+  }
+
+  .hero-date-box {
+    padding:
+      0.55rem
+      0.72rem;
+  }
+
+  .hero-organizer {
+    font-size: 0.78rem;
+  }
+
+  .hero-organizer strong {
+    font-size: 0.86rem;
+  }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
 @media (prefers-reduced-motion: reduce) {
   .hero-video-bg {
     display: none;
