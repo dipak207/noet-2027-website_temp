@@ -1,0 +1,132 @@
+.committees-section {
+  background: var(--secondary-color);
+}
+
+.committee-tier {
+  text-align: center;
+  padding: 2rem 0;
+  margin-bottom: 2rem;
+}
+
+.committee-tier h3 {
+  color: var(--highlight-color);
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+}
+
+.committee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.committee-card {
+  padding: 1.5rem;
+  text-align: center;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.committee-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(13, 110, 253, 0.15);
+}
+
+.committee-card h3 {
+  color: var(--highlight-color);
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+}
+
+.committee-lists {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.committee-list {
+  padding: 2rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+}
+
+.committee-list h3 {
+  color: var(--highlight-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  border-bottom: 2px solid var(--highlight-color);
+  padding-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.committee-list ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.committee-list li {
+  padding: 0.75rem;
+  background: rgba(13, 110, 253, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  color: var(--text-color);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.committee-list li:hover {
+  background: rgba(13, 110, 253, 0.1);
+  border-color: var(--highlight-color);
+}
+
+/* Custom scrollbar for lists */
+.committee-list ul::-webkit-scrollbar {
+  width: 6px;
+}
+.committee-list ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+.committee-list ul::-webkit-scrollbar-thumb {
+  background: var(--highlight-color);
+  border-radius: 3px;
+}
+
+@media (max-width: 1024px) {
+  .committee-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .committee-tier {
+    padding: 1.5rem 0;
+  }
+  
+  .committee-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .committee-lists {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .committee-list {
+    padding: 1.5rem;
+  }
+  
+  .committee-list ul {
+    max-height: 250px;
+  }
+}

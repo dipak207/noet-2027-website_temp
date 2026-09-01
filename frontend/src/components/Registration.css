@@ -1,0 +1,270 @@
+.registration-grid {
+  display: grid;
+  /* fr units (not %) so the 2.5rem gap is subtracted from the available
+     width instead of added on top of it — percentages here caused the
+     grid to run ~30px wider than its container at tablet widths. */
+  grid-template-columns: 45fr 55fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.fees-info, .registration-form {
+  padding: 2.5rem;
+}
+
+/* Fees Section */
+.fees-info h3,
+.registration-form h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.fees-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.fee-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+}
+
+.fee-category {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.fee-amount {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--highlight-color);
+}
+
+/* Bank Details */
+.bank-details {
+  background: rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+}
+
+.bank-details h4 {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.payment-methods {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.qr-code-container {
+  text-align: center;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.qr-code-container img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.qr-code-container p {
+  font-size: 0.85rem;
+  color: #333;
+  margin-top: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.bank-text-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 200px;
+}
+
+.bank-detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bank-detail-row strong {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+.bank-detail-row span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Registration Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  min-height: 48px;
+}
+
+.form-group input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--highlight-color);
+  background: rgba(13, 110, 253, 0.08);
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+}
+
+.btn-submit {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.status-msg {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--highlight-color);
+  font-weight: 600;
+}
+
+/* Tablet: 980px - 1200px */
+@media (max-width: 1200px) {
+  .registration-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
+  .fees-info, .registration-form {
+    padding: 2rem;
+  }
+}
+
+/* Tablet: 700px - 980px */
+@media (max-width: 980px) {
+  .registration-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile: < 700px */
+@media (max-width: 700px) {
+  .registration-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .fees-info, .registration-form {
+    padding: 1.5rem;
+  }
+  
+  .fees-info h3,
+  .registration-form h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .fees-list {
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .fee-item {
+    padding: 0.75rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .payment-methods {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .qr-code-container {
+    width: 100%;
+  }
+  
+  .qr-code-container img {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .bank-text-info {
+    width: 100%;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 0.65rem 0.8rem;
+    min-height: 44px;
+  }
+}
