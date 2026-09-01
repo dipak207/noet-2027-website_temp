@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import './Hero.css';
 
-const VIDEO_SRC = '/assets/final_noet_video.mp4';
+const VIDEO_SRC = '/assets/final_noet_video_cropped.mp4';
 
 const Hero = () => {
   const videoRef = useRef(null);
